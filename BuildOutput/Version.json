@@ -1,12 +1,12 @@
 ﻿{
     "AppName":  "EasyMix",
-    "Version":  "1.0.0",
-    "File":  "EasyMix-v1.0.0.zip",
-    "ZipUrl":  "https://github.com/thinh270388/EasyMix/releases/download/v1.0.0/EasyMix-v1.0.0.zip",
+    "Version":  "1.0.1",
+    "File":  "EasyMix-v1.0.1.zip",
+    "ZipUrl":  "https://github.com/thinh270388/EasyMix/releases/download/v1.0.1/EasyMix-v1.0.1.zip",
     "VersionUrl":  "https://raw.githubusercontent.com/thinh270388/EasyMix/main/BuildOutput/Version.json",
     "GitHubUser":  "thinh270388",
     "GitHubRepo":  "EasyMix",
-    "Build":  "2025-06-27 22:13",
-    "Sha":  "fbeb658",
-    "ChangeLog":  "- Build Release lúc 2025-06-27 22:13"
+    "Build":  "2025-06-27 22:27",
+    "Sha":  "3cb1db2",
+    "ChangeLog":  "- Build Release lúc 2025-06-27 22:27"
 }
