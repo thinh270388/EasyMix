@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <AssemblyName>$(AppName)</AssemblyName>
+    <AssemblyName>EasyMix</AssemblyName>
     <NoWarn>$(NoWarn);MSB3305</NoWarn>
 
     <!-- Metadata chung -->
@@ -14,13 +14,13 @@
     <Company>LPNT</Company>
     <ContactEmail>thinh270388@gmail.com</ContactEmail>
     <ContactPhone>+84775426999</ContactPhone>
-    <Product>$(AppName)</Product>
-    <Description>$(AppName) - WPF</Description>
+    <Product>EasyMix</Product>
+    <Description>EasyMix - WPF</Description>
     <Copyright>Copyright © LPNT 2025</Copyright>
 
     <!-- GitHub thông tin -->
     <GitHubUser>thinh270388</GitHubUser>
-    <GitHubRepo>$(AppName)</GitHubRepo>
+    <GitHubRepo>EasyMix</GitHubRepo>
     <AppName>EasyMix</AppName>
 
     <!-- Versioning -->
