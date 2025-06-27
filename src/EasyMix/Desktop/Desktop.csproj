@@ -1,0 +1,90 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>$(AppName)</AssemblyName>
+    <NoWarn>$(NoWarn);MSB3305</NoWarn>
+
+    <!-- Metadata chung -->
+    <Authors>Lê Phúc Nhã Thịnh</Authors>
+    <Company>LPNT</Company>
+    <ContactEmail>thinh270388@gmail.com</ContactEmail>
+    <ContactPhone>+84775426999</ContactPhone>
+    <Product>$(AppName)</Product>
+    <Description>$(AppName) - WPF</Description>
+    <Copyright>Copyright © LPNT 2025</Copyright>
+
+    <!-- GitHub thông tin -->
+    <GitHubUser>thinh270388</GitHubUser>
+    <GitHubRepo>$(AppName)</GitHubRepo>
+    <AppName>EasyMix</AppName>
+
+    <!-- Versioning -->
+    <Version>1.0.0</Version>
+    <AssemblyVersion>$(Version).0</AssemblyVersion>
+    <FileVersion>$(Version).0</FileVersion>
+
+    <!-- Build Output -->
+    <ZipFileName>$(AppName)-v$(Version).zip</ZipFileName>
+    <ZipUrl>https://github.com/$(GitHubUser)/$(GitHubRepo)/releases/download/v$(Version)/$(ZipFileName)</ZipUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Templates\HuongDanGiai.docx" />
+    <None Remove="Assets\Templates\TieuDe.docx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>8</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>2df8d04c-5bfa-101b-bde5-00aa0044de52</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>7</VersionMinor>
+      <VersionMajor>8</VersionMajor>
+      <Guid>00020905-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Templates\HuongDanGiai.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Templates\TieuDe.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
+    <PackageReference Include="Octokit" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Desktop.MathType\Desktop.MathType.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EasyUpdater.Core">
+      <HintPath>..\..\..\..\EasyUpdater\src\EasyUpdater\EasyUpdater.Core\bin\Release\net8.0-windows\publish\EasyUpdater.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

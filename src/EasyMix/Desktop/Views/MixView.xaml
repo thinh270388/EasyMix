@@ -1,0 +1,126 @@
+﻿<UserControl x:Class="Desktop.Views.MixView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Desktop.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Trộn đề kiểm tra" FontSize="20" FontWeight="Bold" Margin="5"/>
+
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Tệp nguồn: " VerticalAlignment="Center" Width="100"/>
+            <TextBox Grid.Column="1" Text="{Binding SourceFile, Mode=TwoWay}" IsReadOnly="True" Margin="5,0,0,0"/>
+            <Button Grid.Column="2" Content="Chọn tệp" Command="{Binding BrowseFileCommand}" Margin="5,0,0,0" Width="100"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0"
+                      Margin="5"
+                      ItemsSource="{Binding Questions}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      HeadersVisibility="Column"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Loại câu hỏi" Binding="{Binding QuestionType,Converter={StaticResource QuestionTypeConverter}}" Width="100" />
+                    <DataGridTextColumn Header="Mức độ" Binding="{Binding Level,Converter={StaticResource LevelConverter}}" Width="70" />
+                    <DataGridTextColumn Header="Câu" Binding="{Binding Code}" Width="50" />
+
+                    <!-- CorrectAnswer -->
+                    <DataGridTemplateColumn Header="Đáp án đúng" Width="300">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CorrectAnswer}" 
+                               TextWrapping="Wrap"
+                               VerticalAlignment="Top"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
+                    <DataGridTextColumn Header="Số đáp án" Binding="{Binding CountAnswer}" Width="80" />
+                    
+                    <DataGridTextColumn Header="Ghi chú" Binding="{Binding Description}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <DocumentViewer Grid.Column="1" Margin="5" Document="{Binding Document}" />
+        </Grid>
+        
+        <GroupBox Grid.Row="3" Header="Thông tin" Margin="5" Padding="10">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Đơn vị cấp trên: " Margin="5"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding MixInfo.SuperiorUnit}" Margin="5" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Đơn vị: " Margin="5"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding MixInfo.Unit}" Margin="5" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Kỳ kiểm tra: " Margin="5"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding MixInfo.TestPeriod}" Margin="5" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="Năm học: " Margin="5"/>
+                    <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding MixInfo.SchoolYear}" Margin="5" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="1" Grid.Column="2" Content="Môn học: " Margin="5"/>
+                    <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding MixInfo.Subject}" Margin="5" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="2" Grid.Column="2" Content="Thời gian: " Margin="5"/>
+                    <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding MixInfo.Time}" Margin="5" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="0" Grid.Column="4" Content="Số đề cần trộn: " Margin="5"/>
+                    <TextBox Grid.Row="0" Grid.Column="5" Text="{Binding MixInfo.NumberOfVersions}" Margin="5" VerticalContentAlignment="Center"/>
+                    
+                    <Label Grid.Row="1" Grid.Column="4" Content="Mã đề bắt đầu: " Margin="5"/>
+                    <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding MixInfo.StartCode}" Margin="5" VerticalContentAlignment="Center"/>
+
+                    <Label Grid.Row="2" Grid.Column="4" Content="Danh sách mã đề: " Margin="5"/>
+                    <TextBox Grid.Row="2" Grid.Column="5" Text="{Binding ExamCodes}" Margin="5" VerticalContentAlignment="Center" AcceptsReturn="True"/>
+                </Grid>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Lưu thông tin" Command="{Binding SaveMixInfoCommand}" Margin="5" Width="100"/>
+                    <Button Content="Tạo mã đề thứ tự" Command="{Binding GenerateSequentialExamCodesCommand}" Margin="5" Width="150"/>
+                    <Button Content="Tạo mã đề ngẫu nhiên" Command="{Binding GenerateRandomExamCodesCommand}" Margin="5" Width="150"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Trộn đề" Command="{Binding MixCommand}" IsEnabled="{Binding IsEnableMix}" Margin="5" Width="100"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
